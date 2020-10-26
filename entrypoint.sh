@@ -42,20 +42,20 @@ set -o pipefail
 # echo "pre_release = $pre_release"
 #
 # # fetch tags
-git fetch --tags
+# git fetch --tags
 #
 # # get latest tag that looks like a semver (with or without v)
-case "$tag_context" in
-    *repo*)
-        tag=$(git for-each-ref --sort=-v:refname --format '%(refname)' | cut -d / -f 3- | grep -E "^v?[0-9]+.[0-9]+.[0-9]+$" | head -n1)
-        pre_tag=$(git for-each-ref --sort=-v:refname --format '%(refname)' | cut -d / -f 3- | grep -E "^v?[0-9]+.[0-9]+.[0-9]+(-$suffix.[0-9]+)?$" | head -n1)
-        ;;
-    *branch*)
-        tag=$(git tag --list --merged HEAD --sort=-v:refname | grep -E "^v?[0-9]+.[0-9]+.[0-9]+$" | head -n1)
-        pre_tag=$(git tag --list --merged HEAD --sort=-v:refname | grep -E "^v?[0-9]+.[0-9]+.[0-9]+(-$suffix.[0-9]+)?$" | head -n1)
-        ;;
-    * ) echo "Unrecognised context"; exit 1;;
-esac
+# case "$tag_context" in
+#     *repo*)
+#         tag=$(git for-each-ref --sort=-v:refname --format '%(refname)' | cut -d / -f 3- | grep -E "^v?[0-9]+.[0-9]+.[0-9]+$" | head -n1)
+#         pre_tag=$(git for-each-ref --sort=-v:refname --format '%(refname)' | cut -d / -f 3- | grep -E "^v?[0-9]+.[0-9]+.[0-9]+(-$suffix.[0-9]+)?$" | head -n1)
+#         ;;
+#     *branch*)
+#         tag=$(git tag --list --merged HEAD --sort=-v:refname | grep -E "^v?[0-9]+.[0-9]+.[0-9]+$" | head -n1)
+#         pre_tag=$(git tag --list --merged HEAD --sort=-v:refname | grep -E "^v?[0-9]+.[0-9]+.[0-9]+(-$suffix.[0-9]+)?$" | head -n1)
+#         ;;
+#     * ) echo "Unrecognised context"; exit 1;;
+# esac
 #
 # # if there are none, start tags at INITIAL_VERSION which defaults to 0.0.0
 # if [ -z "$tag" ]
@@ -68,16 +68,16 @@ esac
 # fi
 #
 # # get current commit hash for tag
-tag_commit=$(git rev-list -n 1 $tag)
+# tag_commit=$(git rev-list -n 1 $tag)
 #
 # # get current commit hash
 commit=$(git rev-parse HEAD)
 #
-if [ "$tag_commit" == "$commit" ]; then
-    echo "No new commits since previous tag. Skipping..."
-    echo ::set-output name=tag::$tag
-    exit 0
-fi
+# if [ "$tag_commit" == "$commit" ]; then
+#     echo "No new commits since previous tag. Skipping..."
+#     echo ::set-output name=tag::$tag
+#     exit 0
+# fi
 #
 # # echo log if verbose is wanted
 # if $verbose
