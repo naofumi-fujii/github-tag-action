@@ -10,7 +10,7 @@ set -o pipefail
 # source=${SOURCE:-.}
 # dryrun=${DRY_RUN:-false}
 # initial_version=${INITIAL_VERSION:-0.0.0}
-tag_context=${TAG_CONTEXT:-repo}
+# tag_context=${TAG_CONTEXT:-repo}
 # suffix=${PRERELEASE_SUFFIX:-beta}
 # verbose=${VERBOSE:-true}
 #
