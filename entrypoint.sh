@@ -71,7 +71,7 @@ set -o pipefail
 # tag_commit=$(git rev-list -n 1 $tag)
 #
 # # get current commit hash
-# commit=$(git rev-parse HEAD)
+commit=$(git rev-parse HEAD)
 #
 # if [ "$tag_commit" == "$commit" ]; then
 #     echo "No new commits since previous tag. Skipping..."
