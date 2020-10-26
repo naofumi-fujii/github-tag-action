@@ -145,6 +145,7 @@ set -o pipefail
 # 
 # echo ::set-output name=tag::$new
 
+new=$TAG_VERSION
 # create local git tag
 git tag $new
 
